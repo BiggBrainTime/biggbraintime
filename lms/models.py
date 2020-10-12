@@ -23,6 +23,7 @@ class Course(models.Model):
     for the course and its instructor
     '''
     category = models.CharField(max_length=50)
+    desc = models.TextField(max_length=5000, null=True)
     course_id = models.AutoField(primary_key = True)
     instructor = models.ForeignKey(User,on_delete=models.CASCADE)
     created = models. DateTimeField(auto_now_add=True)
@@ -34,9 +35,13 @@ class Lecture(models.Model):
     '''
     for each lecture in the course
     '''
-    lec_num = models.IntegerField(primary_key = True)
+    lec_num = models.IntegerField()
+    desc = models.TextField(max_length=3500, null=True)
     link = models.URLField()
-    course = models.ForeignKey(Course,on_delete=models.CASCADE,primary_key = True)
+    course = models.ForeignKey(Course,on_delete=models.CASCADE)
+    class Meta:
+        unique_together = (("course", "lec_num"),)
+    
 
 
 class Tag (models.Model):
@@ -52,7 +57,7 @@ class Comment(models.Model):
     for the comments in the lecture
     '''
     lecture = models.ForeignKey(Lecture,on_delete=models.CASCADE)
-    creator = models.ForeignKey(User,on_delete=models.CASCADE)   #on delete check.. 
+    creator = models.ForeignKey(User,on_delete=models.CASCADE)    
     comment = models.TextField(max_length=3000)
     created = models. DateTimeField(auto_now_add=True)
     reported = models.IntegerField(default=0)  #to delete if it reaches some treshold
@@ -63,9 +68,11 @@ class Enrollment(models.Model):
     '''
     to keep a track of number of enrollments & to keep a record of rating/reviews of a given course
     '''
-    course = models.ForeignKey(Course,on_delete=models.CASCADE,primary_key = True)
-    learner = models.ForeignKey(User,on_delete=models.CASCADE,primary_key = True)
+    course = models.ForeignKey(Course,on_delete=models.CASCADE)
+    learner = models.ForeignKey(User,on_delete=models.CASCADE)
     star = models.IntegerField(null=True)
     review = models.TextField(max_length=3500, null=True)
+    class Meta:
+        unique_together = (("course", "learner"),)
     
 
