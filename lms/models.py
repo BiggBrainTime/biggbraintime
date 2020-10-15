@@ -23,6 +23,7 @@ class Course(models.Model):
     for the course and its instructor
     '''
     category = models.CharField(max_length=50)
+    name = models.CharField(max_length=50)
     desc = models.TextField(max_length=5000, null=True)
     course_id = models.AutoField(primary_key = True)
     instructor = models.ForeignKey(User,on_delete=models.CASCADE)
@@ -36,6 +37,7 @@ class Lecture(models.Model):
     for each lecture in the course
     '''
     lec_num = models.IntegerField()
+    name = models.CharField(max_length=100)
     desc = models.TextField(max_length=3500, null=True)
     link = models.URLField()
     course = models.ForeignKey(Course,on_delete=models.CASCADE)
@@ -57,8 +59,9 @@ class Comment(models.Model):
     for the comments in the lecture
     '''
     lecture = models.ForeignKey(Lecture,on_delete=models.CASCADE)
-    creator = models.ForeignKey(User,on_delete=models.CASCADE)    
-    comment = models.TextField(max_length=3000)
+    creator = models.ForeignKey(User,on_delete=models.CASCADE) 
+    comment_id = models.IntegerField(default=0)
+    comments = models.TextField(max_length=3000)
     created = models. DateTimeField(auto_now_add=True)
     reported = models.IntegerField(default=0)  #to delete if it reaches some treshold
     deleted = models.BooleanField(default = False)
@@ -75,4 +78,7 @@ class Enrollment(models.Model):
     class Meta:
         unique_together = (("course", "learner"),)
     
+class Replies(models.Model):
 
+    replies = models.TextField(max_length=3500)
+    comment = models.ForeignKey(Comment,on_delete=models.cascade)
