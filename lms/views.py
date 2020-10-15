@@ -3,6 +3,9 @@ from django.utils import timezone
 from .models import Course, User, Lecture, Tag, Comment, Enrollment
 # Create your views here.
 
+def index(request):
+    return render(request, 'index.html')
+    
 def videopage(request, course_id, lecnum):
     course = Course.objects.get(course_id  = course_id)
     lectcount = Lecture.objects.filter(Course = course).count()
