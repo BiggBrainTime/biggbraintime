@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.utils import timezone
-from .models import Course, User, Lecture, Tag, Comment, Enrollment
+from .models import Course, User, Lecture, Tag, Comment, Enrollment, Replies
 # Create your views here.
 
 def index(request):
@@ -56,3 +56,6 @@ def signup(request):
         return render(request,'index.html')   #index.html=homepage
     else:
         return render(request,'login.html',{'error':False})
+
+def insert_comment(request):
+    return
