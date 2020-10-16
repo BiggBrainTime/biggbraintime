@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.utils import timezone
-from .models import Course, User, Lecture, Tag, Comment, Enrollment
+from .models import Course, User, Lecture, Tag, Comment, Enrollment, Replies
 # Create your views here.
 
 def index(request):
