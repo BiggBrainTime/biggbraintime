@@ -10,7 +10,7 @@ class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     email = models.CharField(max_length=50, unique=True)
     gender = models.CharField(max_length=1, null=True)
-    dob = models.DateField()
+    dob = models.DateField(null = True)
     institute = models.CharField(max_length=50)
     state = models.CharField(max_length=50)
     phone = models.CharField(max_length=10)
@@ -90,5 +90,5 @@ class Enrollment(models.Model):
 class Replies(models.Model):
     replies = models.TextField(max_length=3500)
     comment = models.ForeignKey(Comment,on_delete=models.CASCADE)
-    user = models.ForeignKey(User,on_delete=models.CASCADE)
+    user = models.ForeignKey(User,on_delete=models.CASCADE, default  = 0)
     

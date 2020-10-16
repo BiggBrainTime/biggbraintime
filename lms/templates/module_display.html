@@ -261,7 +261,7 @@ div.toolbar-item button{
             <div id="content-box">
                 <ul class="content-holder">
                     {% for lect in totallect %}
-                    <a href="{% url 'videopage' course_id = {{ course.course_id }} lecnum = lect.lect_num %}">
+                    <a href="{% url 'videopage' 1 1">
                         <li class="content-holder-item active">
                             {{ lect.name }}
                         </li>
@@ -307,15 +307,15 @@ div.toolbar-item button{
                         There is no source code associated with this video!
                         <div class="my-4 d-flex justify-content-between">
                             {% if lects.lec_num > 1 %}
-                                <a class="btn btn-danger" href="{% url 'videopage' course_id = {{ course.course_id }} lecnum = {{ lects.lec_num|sub:1 }} %}">&larr; Previous </a>
+                                <a class="btn btn-danger" href="#">&larr; Previous </a>
                             {% endif %}
                             {% if lects.lec_num < lectcount %}
-                                <a class="btn btn-danger" href="{% url 'videopage' course_id = {{ course.course_id }} lecnum = {{ lects.lec_num|add:1 }} %}">Next &rarr;</a>
+                                <a class="btn btn-danger" href="{% url 'videopage' 1 2 %}">Next &rarr;</a>
                             {% endif %}
                         </div>
                     </div>
                 </div>
-                <div class="tab-pane fade mx-4 mt-3" id="qna" role="tabpanel" aria-labelledby="qna-tab">
+                <!--<div class="tab-pane fade mx-4 mt-3" id="qna" role="tabpanel" aria-labelledby="qna-tab">
     
                     <div class="container mt-4 mb-0 px-0">
                         <h3>Comments</h3>
@@ -379,7 +379,7 @@ div.toolbar-item button{
                                     aria-controls="collapseExample" disabled>
                                     Add Reply </button>
     
-                                <!-- replies are here -->
+                                
                                 <div class="collapse" id="openReply" + {{comment.id}}>
                                     <form action="/videos/postcomment" method="post"><input type="hidden" name="csrfmiddlewaretoken" value="QrTl0ZJeBizZnPBvPUnAIln5XZTk1YUTAJuP4Wyc84O0Saof3o9yquo9jGyGjlvG">
                                         <textarea type="text" maxlength="500" class="form-control my-2" placeholder="Write a reply..."
@@ -392,7 +392,7 @@ div.toolbar-item button{
                                 </div>
     
     
-                </div>
+                </div>-->
                 <div class="tab-pane fade mx-4 mt-3" id="resources" role="tabpanel" aria-labelledby="resources-tab">
                     <div class="container px-0">
     
