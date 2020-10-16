@@ -19,8 +19,8 @@ def videopage(request, course_id, lecnum):
 
 def course_info(request, course_id):
     crse = Course.objects.get(course_id  = course_id)
-    lects = Lecture.objects.filter(Course = crse).order_by('lec_num')
-    enroll = Enrollment.objects.filter(Course = crse)
+    lects = Lecture.objects.filter(course = crse).order_by('lec_num')
+    enroll = Enrollment.objects.filter(course = crse) 
     return render(request,'course_info.html',{'crse':crse, 'lects':lects, 'enroll':enroll})
 
 
@@ -59,3 +59,6 @@ def signup(request):
         return render(request,'index.html')   #index.html=homepage
     else:
         return render(request,'login.html',{'error':False})
+
+def insert_comment(request):
+    return

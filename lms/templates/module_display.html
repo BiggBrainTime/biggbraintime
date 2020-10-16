@@ -321,37 +321,77 @@ div.toolbar-item button{
                 <div class="tab-pane fade mx-4 mt-3" id="qna" role="tabpanel" aria-labelledby="qna-tab">
     
                     <div class="container mt-4 mb-0 px-0">
-                        <h3>Comments({{ comments.count }})</h3>
+                        <h3>Comments</h3>
     
                         {% for comment in comments %}
-                            
-                        {% endfor %}
-                        
                         <div class="row mt-4">
                             <div class="col-sm-3 col-lg-1 col-xl-1">
                                 <img class="w-100 d-block mx-auto rounded-circle"
-                                    src="/static/videoSeries/img/commentImg.png">
+                                    src= userprofile>
                             </div>
                             <div class="col-md-8 col-lg-10 col-xl-10 commentContainer">
                                 <div class="my-2 mx-2">
-                                    <b>mrsatendra51</b> <span class="badge badge-secondary">1 year, 1 month
-                                        ago</span><br>
-                                    <pre>hi sir your great</pre>
+                                    <b>username</b>><br>
+                                    <pre>comments.comments</pre>
                                 </div>
+                            {% for replies in replies %}
+                                {% if reply.comment.id == comment.id %}
+                                <div class='commentReplies'>
+                                    <div class="row my-3">
+                                        <div class="col-sm-3 col-lg-1 col-xl-1">
+                                            <img class="w-100 rounded-circle" src="/static/videoSeries/img/commentImg.png">
+                                        </div>
+                                        <div class="col-md-8 col-lg-10 col-xl-10">
+                                            <div class="my-2 mx-2">
+                                                <b>harry</b> <span
+                                                    class="badge badge-secondary">10 months, 3 weeks
+                                                    ago</span><br> 
+                                                <pre>{{replies}}</pre>
+    
+                                                <div class="my-2">
+                                                    
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                
+                                {% else %}
+                                <div class="collapse" id="openReply" + {{comment.id}}>
+                                    <form action="" method="post"><input type="hidden" name="csrfmiddlewaretoken" value="QrTl0ZJeBizZnPBvPUnAIln5XZTk1YUTAJuP4Wyc84O0Saof3o9yquo9jGyGjlvG">
+                                        <textarea type="text" maxlength="500" class="form-control my-2" placeholder="Write a reply..."
+                                            name="comment"></textarea>
+                                        <input type="hidden" name="course id" value={{course.id}}>
+                                        <input type="hidden" name="lecture id" value={{lects.id}}>
+                                        <input type="hidden" name="comment" value={{comment.id}}>
+                                        <button class="btn btn-sm btn-danger" type="submit">Reply</button>
+                                    </form>
+                                </div>
+                            {% endfor %}
+                            <div class="collapse" id="openReply" + {{comment.id}}>
+                                <form action="/videos/postcomment" method="post"><input type="hidden" name="csrfmiddlewaretoken" value="QrTl0ZJeBizZnPBvPUnAIln5XZTk1YUTAJuP4Wyc84O0Saof3o9yquo9jGyGjlvG">
+                                    <textarea type="text" maxlength="500" class="form-control my-2" placeholder="Write a reply..."
+                                        name="comment"></textarea>
+                                    <input type="hidden" name="course id" value={{course.id}}>
+                                    <input type="hidden" name="lecture id" value={{lects.id}}>
+                                    <input type="hidden" name="comment" value={{comment.id}}>
+                                    <button class="btn btn-sm btn-danger" type="submit">Reply</button>
+                                </form>
+                            </div>
+                        {% endfor %}
                                 
                                 <button class="btn btn-danger btn-sm" type="button" data-toggle="collapse"
-                                    data-target="#openReply47" aria-expanded="false"
+                                    data-target="#openReply" + {{comment.id}} aria-expanded="false"
                                     aria-controls="collapseExample" disabled>
                                     Add Reply </button>
     
                                 <!-- replies are here -->
-                                <div class="collapse" id="openReply47">
+                                <div class="collapse" id="openReply" + {{comment.id}}>
                                     <form action="/videos/postcomment" method="post"><input type="hidden" name="csrfmiddlewaretoken" value="QrTl0ZJeBizZnPBvPUnAIln5XZTk1YUTAJuP4Wyc84O0Saof3o9yquo9jGyGjlvG">
                                         <textarea type="text" maxlength="500" class="form-control my-2" placeholder="Write a reply..."
                                             name="comment"></textarea>
-                                        <input type="hidden" name="path" value="/videos/python-tutorials-for-absolute-beginners-0">
-                                        <input type="hidden" name="videoSlug" value="python-tutorials-for-absolute-beginners-0">
-                                        <input type="hidden" name="parent" value="47">
+                                        <input type="hidden" name="course id" value={{course.id}}>
+                                        <input type="hidden" name="lecture id" value={{lects.id}}>
+                                        <input type="hidden" name="comment" value={{comment.id}}>
                                         <button class="btn btn-sm btn-danger" type="submit">Reply</button>
                                     </form>
                                 </div>
