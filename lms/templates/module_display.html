@@ -417,16 +417,13 @@ div.toolbar-item button{
             </div>
             <div id="content-box">
                 <ul class="content-holder">
-                    
-                    <a href="/videos/python-tutorials-for-absolute-beginners-0">
-                        <li class="content-holder-item  active
-                                                ">
-                            1. Python Tutorials Teaser
-                            <div class="mx-3">
-                                <i class="far fa-play-circle"></i> Free YouTube Video
-                            </div>
+                    {% for lect in totallect %}
+                    <a href="{% url 'videopage' course_id = {{ course.course_id }} lecnum = lect.lect_num %}">
+                        <li class="content-holder-item active">
+                            {{ lect.name }}
                         </li>
                     </a>
+                    {% endfor %}
                 </ul>
             </div>
         </div> 
@@ -461,23 +458,17 @@ div.toolbar-item button{
                     <div class="container clearfix py-2 px-0">
                         <h3 class="mb-3">
     
-                            Python Tutorials Teaser
+                            {{ lects.name }}
                         </h3>
-                        </p><p>Python is one of the most famous and recent Programming Languages.&nbsp; I took this initiative of starting this course as I always wanted to make it easy for people to learn Python. On top of that, I got a lot of requests to teach Python in depth. In this course, we will be learning Python from the very beginning to the advanced level, where we will be doing projects like Jarvis desktop assistant and an Indian Railways announcement system.</p>
-<p>Most importantly, I will be giving some quizzes and exercises to test your skills regularly. I will be providing questions, and then you have to try solving them. This Python tutorial will enhance your programming skills, and it will also help you become a pro programmer.&nbsp;</p>
-<p>Technology is enhancing, and human beings always try to reduce their manual efforts. After learning Programming, one can reduce his/her manual efforts to accomplish his/her work on the machine.&nbsp;</p>
-<p>Programming allows us to minimize manual work. With the help of programming, we can make scripts that can help us do our work at a much faster rate.</p>
-<p>Programming can change our lives entirely as it can help us create many programs &amp; scripts which can run automatically and can easily accomplish our task in almost no time.</p>
-<p>So from the next video, we will be starting our first lecture in this complete course of Python.</p>
+                        </p><p>{{ lects.desc }}</p>
                         There is no source code associated with this video!
                         <div class="my-4 d-flex justify-content-between">
-                            
-                            <a class="btn btn-danger" href="#">&larr; Previous </a>
-                            
-    
-                            
-                            <a class="btn btn-danger" href="/videos/python-tutorials-for-absolute-beginners-1">Next &rarr;</a>
-                            
+                            {% if lects.lec_num > 1 %}
+                                <a class="btn btn-danger" href="{% url 'videopage' course_id = {{ course.course_id }} lecnum = {{ lects.lec_num|sub:1 }} %}">&larr; Previous </a>
+                            {% endif %}
+                            {% if lects.lec_num < lectcount %}
+                                <a class="btn btn-danger" href="{% url 'videopage' course_id = {{ course.course_id }} lecnum = {{ lects.lec_num|add:1 }} %}">Next &rarr;</a>
+                            {% endif %}
                         </div>
                     </div>
                 </div>
