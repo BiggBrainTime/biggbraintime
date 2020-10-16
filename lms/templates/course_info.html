@@ -1,0 +1,315 @@
+{% load static %}
+<!doctype html>
+<html class="no-js" lang="zxx">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>{{crse.category}}</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- <link rel="manifest" href="site.webmanifest"> -->
+    <link rel="shortcut icon" type="image/x-icon" href="img/favicon.png">
+    <!-- Place favicon.ico in the root directory -->
+
+    <!-- CSS here -->
+    <link rel="stylesheet" href="{% static 'lms/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'lms/owl.carousel.min.css' %}">
+    <link rel="stylesheet" href="{% static 'lms/magnific-popup.css' %}">
+    <link rel="stylesheet" href="{% static 'lms/font-awesome.min.css' %}">
+    <link rel="stylesheet" href="{% static 'lms/themify-icons.css' %}">
+    <link rel="stylesheet" href="{% static 'lms/nice-select.css' %}">
+    <link rel="stylesheet" href="{% static 'lms/flaticon.css' %}">
+    <link rel="stylesheet" href="{% static 'lms/gijgo.css' %}">
+    <link rel="stylesheet" href="{% static 'lms/animate.css' %}">
+    <link rel="stylesheet" href="{% static 'lms/slick.css' %}">
+    <link rel="stylesheet" href="{% static 'lms/slicknav.css' %}">
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/themes/smoothness/jquery-ui.css">
+
+    <link rel="stylesheet" href="{% static 'lms/style.css' %}">
+    <!-- <link rel="stylesheet" href="css/responsive.css"> -->
+</head>
+
+<body>
+    <!--[if lte IE 9]>
+            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
+        <![endif]-->
+
+    <!-- header-start -->
+    <header>
+        <div class="header-area ">
+            <div class="header-top_area d-none d-lg-block">
+                <div class="container">
+                    <div class="row align-items-center">
+                        <div class="col-xl-4 col-lg-4">
+                            <div class="logo">
+                                <a href="index.html">
+                                    <h1>BiggBrainTime</h1>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-xl-8 col-md-8">
+                            <div class="header_right d-flex align-items-center">
+
+                                <div class="book_btn d-none d-lg-block">
+                                    <a class="boxed-btn3-line" href="#">Enroll</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="sticky-header" class="main-header-area">
+                <div class="container">
+                    <div class="header_bottom_border">
+                        <div class="row align-items-center">
+                            <div class="col-12 d-block d-lg-none">
+                                <div class="logo">
+                                    <a href="index.html">
+                                        <img src="{% static 'img/logo.png' %}" alt="">
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col-xl-3 col-lg-3 d-none d-lg-block">
+                                <div class="Appointment justify-content-end">
+                                    <div class="search_btn" style = "float:right">
+                                        <a data-toggle="modal" data-target="#exampleModalCenter" href="#">
+                                            <i class="ti-search"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="mobile_menu d-block d-lg-none"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- header-end -->
+
+    <!-- bradcam_area  -->
+    <div class="bradcam_area bradcam_area2" >
+        <div class="container">
+            <div class="background img-responsive"  style="background-image: 
+            url('https://cdn.dnaindia.com/sites/default/files/styles/full/public/2018/09/05/714512-ethical-hackingthinkstockphotos.jpg');">
+            <div class="row">
+                <div class="col-xl-12">
+                    <div class="bradcam_text text-center">
+                        <h3>{{crse.category}}</h3>
+                        <h2>Price:{{crse.price}}</h2>
+                        <div class="book_btn d-none d-lg-block">
+                            <a class="boxed-btn3-line" style = "color:black" href="#">Enroll</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </div>
+    </div>
+
+    <!--/ bradcam_area  -->
+
+    <!-- service_details_start  -->
+    <div class="service_details_area">
+        <div class="container">
+            <div class="row">
+                    <div class="col-lg-4 col-md-4">
+                            <div class="service_details_left">
+                                <h3>Course Details</h3>
+                                <div class="nav nav-pills" id="v-pills-tab" role="tablist"
+                                    aria-orientation="vertical">
+                                    <a class=" active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home"
+                                        role="tab" aria-controls="v-pills-home" aria-selected="true">About Course</a>
+                                    <a class="" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile"
+                                        role="tab" aria-controls="v-pills-profile" aria-selected="false">Lectures</a>
+                                    <a class="" id="v-pills-messages-tab" data-toggle="pill" href="#v-pills-messages"
+                                        role="tab" aria-controls="v-pills-messages" aria-selected="false">Instructor</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-8 col-md-8">
+                            <div class="tab-content" id="v-pills-tabContent">
+                                <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel"
+                                    aria-labelledby="v-pills-home-tab">
+                                    <div class="service_details_info">
+                                        <h3>About Course</h3>
+                                        <p>{{crse.desc}}</p>
+                                    </div>
+                                    <div class="service_thumb">
+                                        <img class="img-fluid" src="img/service/service_details.png" alt="">
+                                    </div>
+                                    <div class="accordion_area">
+                                        <div class="faq_ask">
+                                            <h3>FAQs</h3>
+                                            <div id="accordion">
+                                                <div class="card">
+                                                    <div class="card-header" id="headingTwo">
+                                                        <h5 class="mb-0">
+                                                            <button class="btn btn-link collapsed" data-toggle="collapse"
+                                                                data-target="#collapseTwo" aria-expanded="false"
+                                                                aria-controls="collapseTwo">
+                                                                What do I get when I <span>enroll for 
+                                                                    this course?
+                                                                </span>
+                                                            </button>
+                                                        </h5>
+                                                    </div>
+                                                    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo"
+                                                        data-parent="#accordion" style="">
+                                                        <div class="card-body">Lifetime access to all lectures. Certificate on completion of course.
+                                                            Access to an exclusive discussion forum for all doubts and issues.
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="card">
+                                                    <div class="card-header" id="headingOne">
+                                                        <h5 class="mb-0">
+                                                            <button class="btn btn-link collapsed" data-toggle="collapse"
+                                                                data-target="#collapseOne" aria-expanded="false"
+                                                                aria-controls="collapseOne">
+                                                                Who can enroll for this course?
+                                                            </button>
+                                                        </h5>
+                                                    </div>
+                                                    <div id="collapseOne" class="collapse" aria-labelledby="headingOne"
+                                                        data-parent="#accordion" style="">
+                                                        <div class="card-body">Anybody with an internet connection who is inclined to 
+                                                            learn.
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="card">
+                                                    <div class="card-header" id="headingThree">
+                                                        <h5 class="mb-0">
+                                                            <button class="btn btn-link collapsed" data-toggle="collapse"
+                                                                data-target="#collapseThree" aria-expanded="false"
+                                                                aria-controls="collapseThree">
+                                                                Is there a time limit on course completion?
+                                                            </button>
+                                                        </h5>
+                                                    </div>
+                                                    <div id="collapseThree" class="collapse" aria-labelledby="headingThree"
+                                                        data-parent="#accordion" style="">
+                                                        <div class="card-body">No, we offer complete flexibility on deadlines
+                                                            and assignments. You learn at your pace.
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="tab-pane fade" id="v-pills-profile" role="tabpanel"
+                                    aria-labelledby="v-pills-profile-tab">
+                                    <div class="service_details_info">
+                                        <h3>Lecture List</h3>
+                                        {% for lec in lects %}
+                                        <a href="{{lec.link}}"><p style = "color:blue">{{lec.lec_num}}. {{lec.title}}</p></a>
+                                        <p>{{lec.desc}}</p>
+                                        {% endfor %}
+                                    </div>
+                                    <div class="service_thumb">
+                                        <img class="img-fluid" src="img/service/service_details.png" alt="">
+                                    </div>
+                                </div>
+                                <div class="tab-pane fade" id="v-pills-messages" role="tabpanel"
+                                    aria-labelledby="v-pills-messages-tab">
+                                    <div class="service_details_info">
+                                        <h3>Meet the instructor</h3>
+                                        <h4>{{crse.instructor.name}}</h4>
+                                    </div>
+                                    <div class="service_thumb">
+                                        <img class="img-fluid" src="{% static 'img/banner/accordion.png' %}" alt="">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+            </div>
+        </div>
+    </div>
+    <!-- service_details_start  -->
+
+    <!-- contact_location  -->
+    <div class="contact_location">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-6 col-lg-6 col-md-6">
+                    <div class="location_left">
+                        <div class="logo">
+                            <a href="index.html">
+                                <h2>BiggBrainTime</h2>
+                            </a>
+                        </div>
+                        <ul>
+                            <li><a href="#"> <i class="fa fa-facebook"></i> </a></li>
+                            <li><a href="#"> <i class="fa fa-google-plus"></i> </a></li>
+                            <li><a href="#"> <i class="fa fa-twitter"></i> </a></li>
+                            <li><a href="#"> <i class="fa fa-youtube"></i> </a></li>
+                        </ul>
+                    </div>
+                </div>
+                    <div class="single_location">
+                        <h3> <img src="img/icon/support.svg" alt=""> Location</h3>
+                        <p>+10 267 3563 4562 <br>
+                            support@example.com</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--/ contact_location  -->
+
+
+  <!-- Modal -->
+  <div class="modal fade custom_search_pop" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="serch_form">
+            <input type="text" placeholder="search" >
+            <button type="submit">search</button>
+        </div>
+      </div>
+    </div>
+  </div>
+    <!-- JS here -->
+    <script src="{% static 'js/vendor/modernizr-3.5.0.min.js' %}"></script>
+    <script src="{% static 'js/vendor/jquery-1.12.4.min.js' %}"></script>
+    <script src="{% static 'js/popper.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'js/owl.carousel.min.js' %}"></script>
+    <script src="{% static 'js/isotope.pkgd.min.js' %}"></script>
+    <script src="{% static 'js/ajax-form.js' %}"></script>
+    <script src="{% static 'js/waypoints.min.js' %}"></script>
+    <script src="{% static 'js/jquery.counterup.min.js' %}"></script>
+    <script src="{% static 'js/imagesloaded.pkgd.min.js' %}"></script>
+    <script src="{% static 'js/scrollIt.js' %}"></script>
+    <script src="{% static 'js/jquery.scrollUp.min.js' %}"></script>
+    <script src="{% static 'js/wow.min.js' %}"></script>
+    <script src="{% static 'js/nice-select.min.js' %}"></script>
+    <script src="{% static 'js/jquery.slicknav.min.js' %}"></script>
+    <script src="{% static 'js/jquery.magnific-popup.min.js' %}"></script>
+    <script src="{% static 'js/plugins.js' %}"></script>
+    <!-- <script src="js/gijgo.min.js"></script> -->
+    <script src="{% static 'js/slick.min.js' %}"></script>
+
+
+
+    <!--contact js-->
+    <script src="{% static 'js/contact.js' %}"></script>
+    <script src="{% static 'js/jquery.ajaxchimp.min.js' %}"></script>
+    <script src="{% static 'js/jquery.form.js' %}"></script>
+    <script src="{% static 'js/jquery.validate.min.js' %}"></script>
+    <script src="{% static 'js/mail-script.js' %}"></script>
+
+
+    <script src="{% static 'js/main.js' %}"></script>
+
+    
+</body>
+
+</html>

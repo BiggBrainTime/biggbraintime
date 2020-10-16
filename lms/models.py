@@ -29,7 +29,7 @@ class Course(models.Model):
     created = models. DateTimeField(auto_now_add=True)
     last_update = models. DateTimeField(auto_now=True)
     enroll = models.IntegerField(default=0)             #keeping this here coz even if a user deletes his account this still should be visible
-
+    price  = models.IntegerField()
 
 class Lecture(models.Model):
     '''
@@ -37,6 +37,7 @@ class Lecture(models.Model):
     '''
     lec_num = models.IntegerField()
     desc = models.TextField(max_length=3500, null=True)
+    title = models.CharField(max_length = 200)
     link = models.URLField()
     course = models.ForeignKey(Course,on_delete=models.CASCADE)
     class Meta:
