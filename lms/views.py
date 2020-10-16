@@ -11,8 +11,9 @@ def videopage(request, course_id, lecnum):
     lectcount = Lecture.objects.filter(course__course_id = course_id).count()
     totallect = Lecture.objects.filter(course__course_id = course_id)
     lects = Lecture.objects.filter(course__course_id = course_id, lec_num = lecnum)
-    chats = []
-    return render(request,'module_display.html',{'course':course, 'lects':lects, 'totallect':totallect,'lectcount':lectcount})
+    comments = Comment.objects.filter(lecture__lec_num = lecnum)
+    replies = Replies.objects.filter()
+    return render(request,'module_display.html',{'course':course, 'lects':lects, 'totallect':totallect,'lectcount':lectcount, 'comments':comments, 'replies':replies})
 
 def course_info(request, course_id):
     crse = Course.objects.get(course_id  = course_id)

@@ -321,9 +321,11 @@ div.toolbar-item button{
                 <div class="tab-pane fade mx-4 mt-3" id="qna" role="tabpanel" aria-labelledby="qna-tab">
     
                     <div class="container mt-4 mb-0 px-0">
-                        <h3>Comments({{lectcount}})</h3>
+                        <h3>Comments({{ comments.count }})</h3>
     
-                        {% for comm}
+                        {% for comment in comments %}
+                            
+                        {% endfor %}
                         
                         <div class="row mt-4">
                             <div class="col-sm-3 col-lg-1 col-xl-1">
