@@ -7,7 +7,7 @@ class User(models.Model):
     '''
     user_id = models.AutoField(primary_key = True)
     name = models.CharField(max_length=50)
-    email = models.CharField(max_length=50)
+    email = models.CharField(max_length=50, unique=True)
     password = models.CharField(max_length=50)
     gender = models.CharField(max_length=1, null=True)
     dob = models.DateField()
