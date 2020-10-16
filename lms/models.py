@@ -59,10 +59,9 @@ class Comment(models.Model):
     for the comments in the lecture
     '''
     lecture = models.ForeignKey(Lecture,on_delete=models.CASCADE)
-    creator = models.ForeignKey(User,on_delete=models.CASCADE) 
-    comment_id = models.IntegerField(default=0)
+    creator = models.ForeignKey(User,on_delete=models.CASCADE)
     comments = models.TextField(max_length=3000)
-    created = models. DateTimeField(auto_now_add=True)
+    created = models.DateTimeField(auto_now_add=True)
     reported = models.IntegerField(default=0)  #to delete if it reaches some treshold
     deleted = models.BooleanField(default = False)
 
@@ -79,7 +78,5 @@ class Enrollment(models.Model):
         unique_together = (("course", "learner"),)
     
 class Replies(models.Model):
-
-    reply_id = models.IntegerField(default=0)
     replies = models.TextField(max_length=3500)
     comment = models.ForeignKey(Comment,on_delete=models.CASCADE)
