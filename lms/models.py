@@ -82,4 +82,4 @@ class Replies(models.Model):
 
     reply_id = models.IntegerField(default=0)
     replies = models.TextField(max_length=3500)
-    comment = models.ForeignKey(Comment,on_delete=models.cascade)
+    comment = models.ForeignKey(Comment,on_delete=models.CASCADE)
