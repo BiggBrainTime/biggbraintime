@@ -244,13 +244,13 @@ body {
          <div class="container right-panel-active" >
             <!-- Sign Up -->
             <div class="container__form container--signup">
-                <form action="/signup" autocomplete="off" method="post" class="form" id="form1">
+                <form action="/signup" autocomplete="off" method="post" class="form" id="form1">{% csrf_token %}
                     <h2 class="form__title m-3">Sign Up</h2>
                     <div style="overflow: auto;">
-                    <input id="firstname" type="text" placeholder="First Name" class="input" />
-                    <input id="lastname" type="text" placeholder="Last Name" class="input" />
-                    <input id="email_sp" type="email" placeholder="Email" class="input" />
-                    <input id="password_sp" type="password" placeholder="Password" class="input" />
+                    <input id="firstname" type="text" placeholder="First Name" class="input" required />
+                    <input id="lastname" type="text" placeholder="Last Name" class="input"  />
+                    <input id="email_sp" type="email" placeholder="Email" class="input" required />
+                    <input id="password_sp" type="password" placeholder="Password" class="input"  required/>
                     <!-- <input id="_sp" type="char" placeholder="M/F/O" class="input" /> -->
                     <div class="autocomplete">
                         <input class="input" id="gender_sp" type="text" name="myCountry" placeholder="Gender(M/F/O)" maxlength="8"> 
@@ -314,10 +314,10 @@ body {
 
             <!-- Sign In -->
             <div class="container__form container--signin">
-                <form action="/signin" method="post" class="form" id="form2">
+                <form action="/signin" method="post" class="form" id="form2">{% csrf_token %}
                     <h2 class="form__title">Sign In</h2>
-                    <input id="email_sn" type="email" placeholder="Email" class="input" />
-                    <input id="password_sn" type="password" placeholder="Password" class="input" />
+                    <input id="email_sn" type="email" placeholder="Email" class="input" required />
+                    <input id="password_sn" type="password" placeholder="Password" class="input" required />
                     
                     <button type="submit" class="btn">Sign In</button>
                 </form>

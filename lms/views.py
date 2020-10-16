@@ -2,7 +2,8 @@ from django.shortcuts import render, redirect
 from django.utils import timezone
 from .models import Course, Lecture, Tag, Comment, Enrollment
 from django.contrib.auth.models import User
-from django.contrib.auth import authenticate, login
+from django.contrib import messages
+from django.contrib.auth import authenticate, login, logout
 # Create your views here.
 
 def index(request):
@@ -28,11 +29,23 @@ def signin(request):
     if request.method == "POST":
         email_sn = request.POST.get('email_sn','')
         password_sn = request.POST.get('password_sn','')
-        update = User.objects.filter(email=email_sn,password=password_sn)
-        if len(update)==0:
-            return render(request,'login.html',{'error':True})
+        
+        user = authenticate(email=email_sn,password=password_sn)
+        if user is not None:
+            login(request,user)
+            messages.success(request,"Login Successful!")
+            return redirect("index")
+        
         else:
-            return render(request,'index.html')   #index.html=homepage
+            messages.error(request,"Login Failed!")
+            return redirect("index")
+
+
+        # update = User.objects.filter(email=email_sn,password=password_sn)
+        # if len(update)==0:
+        #     return render(request,'login.html',{'error':True})
+        # else:
+        #     return render(request,'index.html')   #index.html=homepage
     else:
         return render(request,'login.html',{'error':False})
 
@@ -52,13 +65,22 @@ def signup(request):
 
         if gender!='' and gender not in "MFO":
             gender='N'
-        gender = gender[0]
+        else:
+            gender = gender[0]
 
-        user = User(name=name, email=email, password=password, gender=gender, dob=dob, institute=institute, state=state, display_pic=dp, is_instructor=instructor)
+
+        user = User.objects.create_user(name=name, email=email, password=password, gender=gender, dob=dob, institute=institute, state=state, display_pic=dp, is_instructor=instructor)
         user.save()
-        return render(request,'index.html')   #index.html=homepage
+        messages.success(request,"Your account has been successfully created! Happy learning")
+        return redirect("index")   #index.html=homepage
     else:
         return render(request,'login.html',{'error':False})
+
+def logout(request):
+    logout(request)
+    messages.success("Logged Out Succesfully!")
+    return redirect("index")
+
 
 def insert_comment(request):
     return
