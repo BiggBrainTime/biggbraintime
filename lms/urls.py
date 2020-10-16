@@ -7,5 +7,6 @@ urlpatterns = [
     path('<int:course_id>/<int:lecnum>/',views.videopage, name="videopage"),
     path('signin/',views.signin, name="signin"),
     path('signup/',views.signup, name="signup"),
+    path('logout/',views.logout, name="logout"),
 
 ]
