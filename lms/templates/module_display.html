@@ -335,7 +335,7 @@ div.toolbar-item button{
                                     <pre>comments.comments</pre>
                                 </div>
                             {% for replies in replies %}
-                                {% if reply.comment.id == comment.id %}
+                                {% if replies.comment.id == comment.id %}
                                 <div class='commentReplies'>
                                     <div class="row my-3">
                                         <div class="col-sm-3 col-lg-1 col-xl-1">
@@ -343,9 +343,7 @@ div.toolbar-item button{
                                         </div>
                                         <div class="col-md-8 col-lg-10 col-xl-10">
                                             <div class="my-2 mx-2">
-                                                <b>harry</b> <span
-                                                    class="badge badge-secondary">10 months, 3 weeks
-                                                    ago</span><br> 
+                                                <b>replies.user.getfirstname()</b> <br> 
                                                 <pre>{{replies}}</pre>
     
                                                 <div class="my-2">
@@ -355,7 +353,7 @@ div.toolbar-item button{
                                         </div>
                                     </div>
                                 
-                                {% else %}
+                                {% endif %}
                                 <div class="collapse" id="openReply" + {{comment.id}}>
                                     <form action="" method="post"><input type="hidden" name="csrfmiddlewaretoken" value="QrTl0ZJeBizZnPBvPUnAIln5XZTk1YUTAJuP4Wyc84O0Saof3o9yquo9jGyGjlvG">
                                         <textarea type="text" maxlength="500" class="form-control my-2" placeholder="Write a reply..."
