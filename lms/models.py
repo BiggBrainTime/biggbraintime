@@ -1,14 +1,14 @@
 from django.db import models
+from django.contrib.auth.models import User
+from django.contrib.auth import authenticate, login
+from django.db.models.signals import post_save
+from django.dispatch import receiver
+
 
 # Create your models here.
-class User(models.Model):
-    '''
-    for the users {can be student or instructor}
-    '''
-    user_id = models.AutoField(primary_key = True)
-    name = models.CharField(max_length=50)
+class Profile(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
     email = models.CharField(max_length=50, unique=True)
-    password = models.CharField(max_length=50)
     gender = models.CharField(max_length=1, null=True)
     dob = models.DateField()
     institute = models.CharField(max_length=50)
@@ -16,6 +16,15 @@ class User(models.Model):
     phone = models.CharField(max_length=10)
     display_pic = models.ImageField(upload_to="", default='')  #edit this
     is_instructor = models.BooleanField(default = False)
+
+@receiver(post_save, sender=User)
+def create_user_profile(sender, instance, created, **kwargs):
+    if created:
+        Profile.objects.create(user=instance)
+
+@receiver(post_save, sender=User)
+def save_user_profile(sender, instance, **kwargs):
+    instance.profile.save()
 
 
 class Course(models.Model):
@@ -79,4 +88,4 @@ class Enrollment(models.Model):
     
 class Replies(models.Model):
     replies = models.TextField(max_length=3500)
-    comment = models.ForeignKey(Comment,on_delete=models.cascade)
+    comment = models.ForeignKey(Comment,on_delete=models.CASCADE)

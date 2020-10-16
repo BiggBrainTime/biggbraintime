@@ -1,6 +1,8 @@
 from django.shortcuts import render, redirect
 from django.utils import timezone
-from .models import Course, User, Lecture, Tag, Comment, Enrollment
+from .models import Course, Lecture, Tag, Comment, Enrollment
+from django.contrib.auth.models import User
+from django.contrib.auth import authenticate, login
 # Create your views here.
 
 def index(request):
@@ -37,7 +39,8 @@ def signin(request):
 
 def signup(request):
     if request.method == "POST":
-        name = request.POST.get('name_sp','')
+        name = request.POST.get('firstname','')
+        name = request.POST.get('lastname','')
         email = request.POST.get('email_sp','')
         password = request.POST.get('password_sp','')
         gender = request.POST.get('gender_sp','N')
