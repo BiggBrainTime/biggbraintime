@@ -244,7 +244,7 @@ body {
          <div class="container right-panel-active" >
             <!-- Sign Up -->
             <div class="container__form container--signup">
-                <form autocomplete="off" action="post" class="form" id="form1">
+                <form action="/signup" autocomplete="off" method="post" class="form" id="form1">
                     <h2 class="form__title m-3">Sign Up</h2>
                     <div style="overflow: auto;">
                     <input id="name_sp" type="text" placeholder="Name" class="input" />
@@ -313,7 +313,7 @@ body {
 
             <!-- Sign In -->
             <div class="container__form container--signin">
-                <form action="post" class="form" id="form2">
+                <form action="/signin" method="post" class="form" id="form2">
                     <h2 class="form__title">Sign In</h2>
                     <input id="email_sn" type="email" placeholder="Email" class="input" />
                     <input id="password_sn" type="password" placeholder="Password" class="input" />
@@ -326,10 +326,10 @@ body {
             <div class="container__overlay">
                 <div class="overlay">
                     <div class="overlay__panel overlay--left">
-                        <button class="btn" id="signIn">Sign In</button>
+                        <button type="submit" class="btn" id="signIn">Sign In</button>
                     </div>
                     <div class="overlay__panel overlay--right">
-                        <button class="btn" id="signUp">Sign Up</button>
+                        <button type="submit" class="btn" id="signUp">Sign Up</button>
                     </div>
                 </div>
             </div>
