@@ -81,3 +81,7 @@ class Enrollment(models.Model):
 class Replies(models.Model):
     replies = models.TextField(max_length=3500)
     comment = models.ForeignKey(Comment,on_delete=models.CASCADE)
+<<<<<<< HEAD
+    use_reply = models.ForeignKey(User,on_delete=models.CASCADE)
+=======
+>>>>>>> 85586923cb3b933df919931f8015ebc1743931eb

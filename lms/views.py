@@ -56,3 +56,6 @@ def signup(request):
         return render(request,'index.html')   #index.html=homepage
     else:
         return render(request,'login.html',{'error':False})
+
+def insert_comment(request):
+    return
