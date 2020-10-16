@@ -54,7 +54,7 @@
                             <a class="page-scroll" href="#contact">Contact</a>
                         </li> -->
                         <li class="">
-                            <a class="page-scroll" href="#Navigation" style="background-color: #7CCAD5 !important;">Login</a>
+                            <a class="page-scroll" href="#Navigation" >Login for Instructor</a>
                         </li>
                     </ul>
                 </div>
@@ -89,7 +89,7 @@
 
                 <div class="row text-center">
                     <div class="col-md-6">
-                        <a href="/signin" class="page-scroll btn-xl btn-danger pl-5" style="background-color: #7CCAD5 !important; margin-left: 250px;">Log In</a> 
+                        <a href="/signin" class="page-scroll btn-xl btn-danger pl-5" style="background-color: #7CCAD5 !important; margin-left: 250px;">Sign In</a> 
                     </div>
                     
                     <div class="col-md-6">
@@ -115,8 +115,8 @@
                     
                     <div class="col-md-4 col-sm-6 portfolio-item">
                         
-                        <a href="#">
-                            <img class= "img-responsive" src="https://unsplash.imgix.net/uploads%2F1411419068566071cef10%2F7562527b?q=75&w=1080&h=1080&fit=max&fm=jpg&auto=format&s=240c45655f09c546232a6f106688e502" alt="">
+                        <a href="{% url 'course_info' 1 %}">
+                            <img class= "img-responsive" src="https://cdn.dnaindia.com/sites/default/files/styles/full/public/2018/09/05/714512-ethical-hackingthinkstockphotos.jpg" alt="">
                         </a>
                     </div>
 
@@ -179,6 +179,6 @@
     
     
     <span style="height: 20px; width: 40px; min-height: 20px; min-width: 40px; position: absolute; opacity: 0.85; z-index: 8675309; display: none; cursor: pointer; background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAUCAYAAAD/Rn+7AAADU0lEQVR42s2WXUhTYRjHz0VEVPRFUGmtVEaFUZFhHxBhsotCU5JwBWEf1EWEEVHQx4UfFWYkFa2biPJiXbUta33OXFtuUXMzJ4bK3Nqay7m5NeZq6h/tPQ+xU20zugjOxR/+7/O8539+5znnwMtNTExwJtMb3L/fiLv3botCSmUjeCaejTOb39AiFothfHxcFIrHY8RksZjBsckJcOIRMfFsHD/SsbExUYpnI8DR0dGUGjSb0byhEJp5Uqg5CTSzc2CQleJbMEj9/ywBcGRkJEk9DQqouEVQT1sK444yWI9UonmTjGqauVLEIlHa9x8lAMbj8SSpp0rwKGMVvg8P46vbg0C7na8z8JsMcgHe7jlEa+edRhiLy8n/TUMfu6EvLElk+U0WtGwrTrdfAGQf5J8iiK4LVzDU28t8JtMSocf8E+l68myaNFXm/6rXslLK7ay5TOunuRvZWpJuvwAYjUaTpOIWoquuAZ219RTaxKYp9BbjycoN5FvL9qH9TBX5rvoGdJythvXYSTxdtRnWylO/ZdqrLsGwszzhWQ593z2KlAwCYCQSSZJ6ehZ0W7bD9VBLgN0NCqr3qR7R2rBrL3pu3Sb/7nDlz2uy6cG0OXk0GTbZXzNp8trsPAQdTj6frlWzN2DcXZGKQQAMh8NJ6rpyHe+PnkCr/CAFdZyvpfpjuvkifLF9wIt1Wwlo0OHie1RvWrKa93RjzfzliTzPKz3ltB0/Tevmwp14wGUgHAzSOoUEwFAolFaaBSuhnslPRkJexUJtZ6v5HtUeLswl33n1BgEY5fvhs9sJ3FAiT+QYyyvoAQJuD0KBAFRTJNAuz5/s3gJgMBhMJwrVFRThM5tY5zUF/A4X1f2fvQTRLCuBreoim0YmAbqNJryvPEXeeq46kaNdkQ/1HCncbJKPs9ZSv2VHGfWsZ2hfkhKAfr8/pdxWKx4wwD69PmVfNSOL+lr2w+gYqHpWDtXt1xQ8AMlWU0e1lqLd/APRHoP8AJqWrQG9gYxcPMsvSJUvAA4MDKTUJ7MZLaVy8v+qT21tcDx/OemePr0RTkNrur4A6PP5xCgBsL+/X4wiQDpuuVxOeL1eMYmYeDY6sOp0z+B0OuHxeEQhxkJMFosJiSO/UinOI/8Pc+l7KKArAT8AAAAASUVORK5CYII=);"></span></body>
-    <script src={% static 'base.js' %}></script>
+    <script src="{% static 'base.js' %}"></script>
 </body>
 </html>
