@@ -5,9 +5,9 @@ from .models import Course, User, Lecture, Tag, Comment, Enrollment
 
 def videopage(request, course_id, lecnum):
     course = Course.objects.get(course_id  = course_id)
-    lectcount = Lecture.objects.filter(Course = course).count()
-    totallect = Lecture.objects.filter(Course = course)
-    lects = Lecture.objects.filter(Course = course, lec_num = lecnum)
+    lectcount = Lecture.objects.filter(course__course_id = course_id).count()
+    totallect = Lecture.objects.filter(course__course_id = course_id)
+    lects = Lecture.objects.filter(course__course_id = course_id, lec_num = lecnum)
     chats = []
     return render(request,'module_display.html',{'course':course, 'lects':lects, 'totallect':totallect,'lectcount':lectcount})
 
