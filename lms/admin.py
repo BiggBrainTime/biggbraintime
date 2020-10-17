@@ -1,7 +1,7 @@
 from django.contrib import admin
 
 # Register your models here.
-from . models import  Course,Lecture,Tag,Comment,Enrollment,Replies,Profile
+from . models import  Course,Lecture,Tag,Comment,Enrollment,Replies,Profile, Chatroom,Chat
 
 admin.site.register(Profile)
 #admin.site.register(User)
