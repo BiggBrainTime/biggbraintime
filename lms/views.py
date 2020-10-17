@@ -1,3 +1,4 @@
+from lms.forms import CourseForm
 from django.shortcuts import render, redirect
 from django.utils import timezone
 from .models import Course, Lecture, Tag, Comment, Enrollment
@@ -84,3 +85,19 @@ def logout(request):
 
 def insert_comment(request):
     return
+
+
+def login_for_instructor(request):
+    form = CourseForm()
+
+    if request.method == "POST":
+        form = CourseForm(request.POST)
+
+    if form.is_valid():
+        form.save(commit=True)
+        return index(request)
+
+    else:
+        print("Error Form Invalid!")
+
+    return render(request, 'instructor_page.html', {'form':form})
