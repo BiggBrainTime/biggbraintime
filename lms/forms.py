@@ -1,6 +1,6 @@
 from django import forms
 from django.forms import ModelForm
-from .models import Profile, Course, Lecture, Tag, Comment, Enrollment, Replies
+from .models import Profile, Course, Lecture, Tag, Comment, Enrollment
 # class UserForm(forms.ModelForm):
 #     class Meta:
 #         model = User

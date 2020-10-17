@@ -15,9 +15,31 @@ def videopage(request, course_id, lecnum):
     lectcount = Lecture.objects.filter(course__course_id = course_id).count()
     totallect = Lecture.objects.filter(course__course_id = course_id)
     lects = Lecture.objects.filter(course__course_id = course_id, lec_num = lecnum)
-    comments = Comment.objects.filter(lecture__lec_num = lecnum)
+    comment = Comment.objects.filter(lecture__lec_num = lecnum)
     #replies = Replies.objects.filter()
-    return render(request,'module_display.html',{'course':course, 'lects':lects, 'totallect':totallect,'lectcount':lectcount, 'comments':comments})
+    return render(request,'module_display.html',{'course':course, 'user':request.user,'lects':lects, 'totallect':totallect,'lectcount':lectcount, 'comment':comment})
+
+def postComment(request):
+        if request.method=="POST":
+            comment = request.POST.get("comment")
+            user =request.user
+            lectureLecnum = request.POST.get("lectureLecnum")
+            lecture = Lecture.objects.get("sno=lectureLecnum ")
+            parentsno = request.POST.get("sno=parentsno ")
+            if parentsno == "":
+                comment = Comment(comment=comment, user=user, lecture=lecture)
+                comment.save()
+                message.success(request, "your reply posted successfully")
+
+            else:
+                parent=Comment.objects.get(sno=parentsno)
+
+                comment = Comment(comment=comment, user=user, lecture=lecture)
+                comment.save()
+                message.success(request, "tour comment posted successfully")
+
+        return redirect(f"/lms/{post.course_id,post.lec_num}")
+
 
 def course_info(request, course_id):
     crse = Course.objects.get(course_id  = course_id)
@@ -83,9 +105,6 @@ def logout(request):
     return redirect("index")
 
 
-def insert_comment(request):
-    return
-
 
 def login_for_instructor(request):
     form = CourseForm()
@@ -101,3 +120,5 @@ def login_for_instructor(request):
         print("Error Form Invalid!")
 
     return render(request, 'instructor_page.html', {'form':form})
+
+    

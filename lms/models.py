@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login
 from django.db.models.signals import post_save
 from django.dispatch import receiver
+from django.utils.timezone import now
 
 
 # Create your models here.
@@ -69,11 +70,13 @@ class Comment(models.Model):
     for the comments in the lecture
     '''
     lecture = models.ForeignKey(Lecture,on_delete=models.CASCADE)
-    creator = models.ForeignKey(User,on_delete=models.CASCADE)
-    comments = models.TextField(max_length=3000)
-    created = models.DateTimeField(auto_now_add=True)
-    reported = models.IntegerField(default=0)  #to delete if it reaches some treshold
-    deleted = models.BooleanField(default = False)
+    comment = models.TextField(max_length=3000)
+    sno= models.AutoField(primary_key=True, default=0)
+    user=models.ForeignKey(User, on_delete=models.CASCADE)
+    parent = models.ForeignKey('self',on_delete=models.CASCADE, null=True , related_name='+')
+    timestamp= models.DateTimeField(default=now)
+    def __str__(self):
+        return self.comment[0:13] + ".." + "by" + self.user.firstname 
 
 
 class Enrollment(models.Model):
@@ -87,8 +90,4 @@ class Enrollment(models.Model):
     class Meta:
         unique_together = (("course", "learner"),)
     
-class Replies(models.Model):
-    replies = models.TextField(max_length=3500)
-    comment = models.ForeignKey(Comment,on_delete=models.CASCADE)
-    user = models.ForeignKey(User,on_delete=models.CASCADE, default  = 0)
     
