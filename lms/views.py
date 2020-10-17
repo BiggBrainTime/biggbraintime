@@ -16,7 +16,14 @@ def videopage(request, course_id, lecnum):
     lectcount = Lecture.objects.filter(course__course_id = course_id).count()
     totallect = Lecture.objects.filter(course__course_id = course_id)
     lects = Lecture.objects.filter(course__course_id = course_id, lec_num = lecnum)
-    comment = Comment.objects.filter(lecture__lec_num = lecnum)
+    comment = Comment.objects.filter(lecture__lec_num = lecnum, parent=None)
+    replies = Comment.objects.filter(lecture__lec_num = lecnum).exclude(parent=None)
+    replyDict={}
+    for reply in replies:
+        if reply.sno not in replyDict.key():
+            replyDict[reply.sno]= [reply]
+        else:
+            replyDict[reply.sno].append(reply)
     #replies = Replies.objects.filter()
     return render(request,'module_display.html',{'course':course, 'user':request.user,'lects':lects, 'totallect':totallect,'lectcount':lectcount, 'comment':comment})
 
@@ -39,7 +46,7 @@ def postComment(request,course_id, lecnum):
                 comment.save()
                 messages.success(request, "tour comment posted successfully")
 
-        return redirect(f"/lms/{post.course_id,post.lec_num}")
+        return redirect(f"127.0.0.1:8000/{course_id}/{lecnum}")
 
 
 def course_info(request, course_id):
