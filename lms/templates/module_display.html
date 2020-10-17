@@ -1,5 +1,6 @@
 
 <!doctype html>
+{% load static %}
 <html lang="en">
 
 <head>
@@ -393,6 +394,61 @@ div.toolbar-item button{
     
     
                 </div>-->
+                
+                {% load humanize %}
+                <div class="container">
+                    <h2>Comments ({{comment.count}})</h2>
+                    {% if user.is_authenticated %}
+                    <form action="/lms/postComment" method="post">
+                    {% csrf_token %}
+                        <div class="form-group">
+                            <label for="postcomment">Post comment</label>
+                            <input type="text" class="form-control" name="comment" placeholder="enter comment here">
+                        </div>
+
+                        <input type="hidden" name="lectureLecnum" value="{{lects.lec_num}}" >
+                        <input type="hidden" name="parentsno"  value="">
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </form>
+                    {% else %}
+                    LOGIN IN TO Comments
+                    {% endif %}
+                    {% for comments in comments %}
+
+                    <div class="row my-3">
+                        <div class="col-md-2 ">
+                            <img class="rounded mx-auto d-block w-100 p-2"src="{% static 'img\icon\avtar.png'%}" style="border: 2px solid black; border-radius: 30px; padding: 11px;">
+                        </div>
+                        <div class="col-md-10 "><b>{{comment.user.first_name}}</b><span style="font-size: 10px; padding: 23px;">{comment.timestamp | naturaltime}}</span>
+                            <div>
+                                {{comment.comment}}
+                            </div>
+                            <div class="reply mx-0">
+                                    <button class="btn btn-sn btn-primary" type="button" data-toggle="collapse" data-target="#replybox{{commment.sno}}" aria-expanded="false" aria-controls="collapseExample">
+                                      Reply
+                                    </button>
+                                  <div class="collapse" id="replybox{{commment.sno}}">
+                                    <div class="card card-body my-2">
+                                        <form action="/lms/postComment" method="post">
+                                            {% csrf_token %}
+                                                <div class="form-group">
+                                                    <label for="comment">Post a reply</label>
+                                                    <input type="text" class="form-control" name="comment" placeholder="enter comment here">
+                                                    <input type="hidden" name="parentsno"  value="{{comment.sno}}">
+                                                    
+                                                </div>
+                        
+                                                <input type="hidden" name="lectureLecnum" value="{{lects.lec_num}}" >
+                                                <button type="submit" class="btn btn-primary">Submit</button>
+                                            </form>
+                                      </div>
+                        
+                                  </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
                 <div class="tab-pane fade mx-4 mt-3" id="resources" role="tabpanel" aria-labelledby="resources-tab">
                     <div class="container px-0">
     
