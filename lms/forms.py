@@ -1,6 +1,6 @@
 from django import forms
 from django.forms import ModelForm
-from .models import Profile, Course, Lecture, Tag, Comment, Enrollment, Replies, User
+from .models import Profile, Course, Lecture, Tag, Comment, Enrollment, User
 
 class UserForm(forms.ModelForm):
     class Meta:
@@ -35,4 +35,4 @@ class LectForm(forms.ModelForm):
     class Meta:
         model = Lecture
         fields = ('lec_num','desc', 'title','link')
-        
+

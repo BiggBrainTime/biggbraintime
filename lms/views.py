@@ -20,7 +20,7 @@ def videopage(request, course_id, lecnum):
     #replies = Replies.objects.filter()
     return render(request,'module_display.html',{'course':course, 'user':request.user,'lects':lects, 'totallect':totallect,'lectcount':lectcount, 'comment':comment})
 
-def postComment(request):
+def postComment(request,course_id, lecnum):
         if request.method=="POST":
             comment = request.POST.get("comment")
             user =request.user
