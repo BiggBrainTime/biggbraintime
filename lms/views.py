@@ -1,4 +1,5 @@
-from lms.forms import CourseForm
+from django.http import request
+from lms.forms import CourseForm, UserForm
 from django.shortcuts import render, redirect
 from django.utils import timezone
 from .models import Course, Lecture, Tag, Comment, Enrollment
@@ -106,7 +107,7 @@ def logout(request):
 
 
 
-def login_for_instructor(request):
+def add_course(request):
     form = CourseForm()
 
     if request.method == "POST":
@@ -119,6 +120,33 @@ def login_for_instructor(request):
     else:
         print("Error Form Invalid!")
 
-    return render(request, 'instructor_page.html', {'form':form})
+    return render(request, 'add_course.html', {'form':form})
 
-    
+
+def chatbox(request):
+    return render(request, 'chatbox.html')
+
+def instructor_login(request):
+    return render(request, 'login_for_instructor.html')
+
+def middle_page(request):
+    return render(request, 'middle_page.html')
+
+def quiz_view(request, course_id):
+    crse = Course.objects.get(course_id  = course_id)
+    return render(request, 'quiz.html', {'crse': crse})
+
+def login_page(request):
+    form = UserForm()
+
+    if request.method == "POST":
+        form = UserForm(request.POST)
+
+    if form.is_valid():
+        form.save(commit=True)
+        return index(request)
+
+    else:
+        print("Error Form Invalid!")
+
+    return render(request, 'login_new.html', {'form':form})
