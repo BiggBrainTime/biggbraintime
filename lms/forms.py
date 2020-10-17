@@ -29,3 +29,9 @@ class CourseForm(forms.ModelForm):
     class Meta:
         model = Course
         fields = '__all__'
+
+class LectForm(forms.ModelForm):
+    class Meta:
+        model = Lecture
+        fields = ('lec_num','desc', 'title','link')
+        
