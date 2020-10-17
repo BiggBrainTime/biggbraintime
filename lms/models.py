@@ -40,6 +40,8 @@ class Course(models.Model):
     last_update = models. DateTimeField(auto_now=True)
     enroll = models.IntegerField(default=0)             #keeping this here coz even if a user deletes his account this still should be visible
     price  = models.IntegerField()
+    def __str__(self):
+        return self.name
 
 class Lecture(models.Model):
     '''
@@ -53,6 +55,9 @@ class Lecture(models.Model):
     course = models.ForeignKey(Course,on_delete=models.CASCADE)
     class Meta:
         unique_together = (("course", "lec_num"),)
+
+    def __str__(self):
+        return self.name
     
 
 
