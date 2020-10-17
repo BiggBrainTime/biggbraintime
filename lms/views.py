@@ -1,3 +1,4 @@
+from django.http import request
 from lms.forms import CourseForm
 from django.shortcuts import render, redirect
 from django.utils import timezone
@@ -87,7 +88,7 @@ def insert_comment(request):
     return
 
 
-def login_for_instructor(request):
+def add_course(request):
     form = CourseForm()
 
     if request.method == "POST":
@@ -101,3 +102,10 @@ def login_for_instructor(request):
         print("Error Form Invalid!")
 
     return render(request, 'instructor_page.html', {'form':form})
+
+
+def chatbox(request):
+    return render(request, 'chatbox.html')
+
+def instructor_login(request):
+    return render(request, 'login_for_instructor.html')
