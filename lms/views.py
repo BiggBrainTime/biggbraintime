@@ -16,7 +16,14 @@ def videopage(request, course_id, lecnum):
     lectcount = Lecture.objects.filter(course__course_id = course_id).count()
     totallect = Lecture.objects.filter(course__course_id = course_id)
     lects = Lecture.objects.filter(course__course_id = course_id, lec_num = lecnum)
-    comment = Comment.objects.filter(lecture__lec_num = lecnum)
+    comment = Comment.objects.filter(lecture__lec_num = lecnum, parent=none)
+    replies = Comment.objects.filter(lecture__lec_num = lecnum).exclude(parent=none)
+    replyDict={}
+    for reply in replies:
+        if reply.sno not in replyDict.key():
+            replyDict[reply.sno]= [reply]
+        else:
+            replyDict[reply.sno].append(reply)
     #replies = Replies.objects.filter()
     return render(request,'module_display.html',{'course':course, 'user':request.user,'lects':lects, 'totallect':totallect,'lectcount':lectcount, 'comment':comment})
 
