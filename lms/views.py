@@ -1,5 +1,5 @@
 from django.http import request
-from lms.forms import CourseForm, UserForm
+from lms.forms import CourseForm, LectForm, UserForm
 from django.shortcuts import render, redirect
 from django.utils import timezone
 from .models import Course, Lecture, Tag, Comment, Enrollment
@@ -27,7 +27,7 @@ def videopage(request, course_id, lecnum):
     #replies = Replies.objects.filter()
     return render(request,'module_display.html',{'course':course, 'user':request.user,'lects':lects, 'totallect':totallect,'lectcount':lectcount, 'comment':comment})
 
-def postComment(request):
+def postComment(request,course_id, lecnum):
         if request.method=="POST":
             comment = request.POST.get("comment")
             user =request.user
@@ -113,6 +113,9 @@ def logout(request):
     return redirect("index")
 
 
+#def insert_comment(request):
+    #return
+
 
 def add_course(request):
     form = CourseForm()
@@ -122,7 +125,7 @@ def add_course(request):
 
     if form.is_valid():
         form.save(commit=True)
-        return index(request)
+        return redirect('add_lects', course_id = form.instance.course_id)
 
     else:
         print("Error Form Invalid!")
@@ -138,6 +141,27 @@ def instructor_login(request):
 
 def middle_page(request):
     return render(request, 'middle_page.html')
+
+def add_lects(request, course_id):
+    if(request.method=="POST"):
+        form1 = LectForm(request.POST)
+        if form1.is_valid():
+            lec_num = request.POST.get('lec_num')
+            desc = request.POST.get('desc')
+            title = request.POST.get('title')
+            link = request.POST.get('link')
+            crse = Course.objects.get(course_id = course_id)
+            if crse is not None:
+                Lecture.objects.create(lec_num = lec_num,name = title, desc = desc, title = title, link = link, course = crse)
+                messages.success(request, '* Lecture Added')
+        else:
+            messages.info(request,'* Wrong Input')
+        return redirect('add_lects', course_id = course_id)
+    
+    form1 = LectForm()
+    crse = Course.objects.get(course_id = course_id)
+    return render(request, 'add_lecture.html',{'form1':form1, 'crse':crse})
+
 
 def quiz_view(request, course_id):
     crse = Course.objects.get(course_id  = course_id)
