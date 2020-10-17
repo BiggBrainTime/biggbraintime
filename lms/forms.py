@@ -1,15 +1,16 @@
 from django import forms
 from django.forms import ModelForm
-from .models import Profile, Course, Lecture, Tag, Comment, Enrollment, Replies
-# class UserForm(forms.ModelForm):
-#     class Meta:
-#         model = User
-#         fields = ('first_name','last_name','email')#Validators have to be added or not?
-#         labels = {
-#             'first_name':'First Name',
-#             'last_name':'Last Name',
-#             'email':'Email',
-#         }
+from .models import Profile, Course, Lecture, Tag, Comment, Enrollment, Replies, User
+
+class UserForm(forms.ModelForm):
+    class Meta:
+        model = User
+        fields = ('first_name','last_name','email')#Validators have to be added or not?
+        labels = {
+            'first_name':'First Name',
+            'last_name':'Last Name',
+            'email':'Email',
+        }
 
 class ProfileForm(forms.ModelForm):
     class Meta:

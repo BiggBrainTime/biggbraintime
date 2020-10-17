@@ -1,5 +1,5 @@
 from django.http import request
-from lms.forms import CourseForm
+from lms.forms import CourseForm, UserForm
 from django.shortcuts import render, redirect
 from django.utils import timezone
 from .models import Course, Lecture, Tag, Comment, Enrollment
@@ -116,3 +116,18 @@ def middle_page(request):
 def quiz_view(request, course_id):
     crse = Course.objects.get(course_id  = course_id)
     return render(request, 'quiz.html', {'crse': crse})
+
+def login_page(request):
+    form = UserForm()
+
+    if request.method == "POST":
+        form = UserForm(request.POST)
+
+    if form.is_valid():
+        form.save(commit=True)
+        return index(request)
+
+    else:
+        print("Error Form Invalid!")
+
+    return render(request, 'login_new.html', {'form':form})
