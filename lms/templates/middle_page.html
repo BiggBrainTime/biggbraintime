@@ -10,19 +10,19 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   </head>
   <body>
-      
-    <div class="container">
-        <div class="jumbotron">
-            <h1>Sign up for Instructor</h1>
-
-
-            <form method="POST">
-                {{ form.as_p }}
-                {% csrf_token %}
-                <input type="submit" class="btn btn-primary" value="Submit">
-            </form>
+      <!-- <h1>Middle Page</h1> -->
+    <section class="align-items-center">
+        <div class="container">
+            <div class="jumbotron">
+                <!-- <button class="btn btn-dark">Chatbox</button> -->
+                <a href="{% url 'chatbox' %}" class="btn btn-dark">Chatbox</a>
+                <a href="{% url 'add_course' %}" class="btn btn-dark">Course Upload</a>
+                <!-- <button class="btn btn-dark">Course Upload</button> -->
+            </div>
         </div>
-    </div>
+    </section>
+    
+
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
