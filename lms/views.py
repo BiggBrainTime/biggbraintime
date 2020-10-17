@@ -101,7 +101,7 @@ def add_course(request):
     else:
         print("Error Form Invalid!")
 
-    return render(request, 'instructor_page.html', {'form':form})
+    return render(request, 'add_course.html', {'form':form})
 
 
 def chatbox(request):
@@ -109,3 +109,6 @@ def chatbox(request):
 
 def instructor_login(request):
     return render(request, 'login_for_instructor.html')
+
+def middle_page(request):
+    return render(request, 'middle_page.html')
