@@ -57,8 +57,6 @@ class Lecture(models.Model):
     class Meta:
         unique_together = (("course", "lec_num"),)
 
-    def __str__(self):
-        return self.name
     
 
 

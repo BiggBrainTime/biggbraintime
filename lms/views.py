@@ -30,7 +30,7 @@ def videopage(request, course_id, lecnum):
 def postComment(request,course_id, lecnum):
         if request.method=="POST":
             comment = request.POST.get("comment")
-            user =request.user
+            user = request.user
             lectureLecnum = request.POST.get("lectureLecnum")
             lecture = Lecture.objects.get("sno=lectureLecnum ")
             parentsno = request.POST.get("sno=parentsno ")
@@ -181,3 +181,13 @@ def login_page(request):
         print("Error Form Invalid!")
 
     return render(request, 'login_new.html', {'form':form})
+
+def user_courses(request, user_id):
+    student = Enrollment.objects.get(learner_id = user_id)
+    return render(request, 'my_course.html',{'student':student})
+
+
+
+    
+
+
