@@ -97,7 +97,7 @@ class Chatroom(models.Model):
     '''
     for the chatroom
     '''
-    instructor = models.ForeignKey(User,on_delete=models.CASCADE)
+    course = models.ForeignKey(Course,on_delete=models.CASCADE)
     learner = models.ForeignKey(User,on_delete=models.CASCADE)
     
 
