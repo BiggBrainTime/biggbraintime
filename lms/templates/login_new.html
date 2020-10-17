@@ -16,10 +16,15 @@
             <h1>Login Page</h1>
                 <form method="POST">
                     {{ form.as_p }}
+
                     {% csrf_token %}
                     <!-- <input type="submit" class="btn btn-primary" value="Submit"> -->
-                    <a href="{% url 'index' %}" type="submit" class="btn btn-primary">Submit</a>
+                    <!-- <a href="{% url 'index' %}" type="submit" class="btn btn-primary">Submit</a> -->
+                    <button type="submit" class="btn btn-dark">Submit</button>
                 </form>
+                {% for msg in messages %}
+            <p style = color:red >{{msg}}</p>
+            {% endfor %}
 
           </div>
       </div>

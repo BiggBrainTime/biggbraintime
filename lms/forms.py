@@ -5,11 +5,13 @@ from .models import Profile, Course, Lecture, Tag, Comment, Enrollment, User
 class UserForm(forms.ModelForm):
     class Meta:
         model = User
-        fields = ('first_name','last_name','email')#Validators have to be added or not?
+        fields = ( 'username', 'password')#Validators have to be added or not?
         labels = {
-            'first_name':'First Name',
-            'last_name':'Last Name',
-            'email':'Email',
+            # 'first_name':'First Name',
+            # 'last_name':'Last Name',
+            # 'email':'Email',
+            'username': 'Username',
+            'password': 'Password',            
         }
 
 class ProfileForm(forms.ModelForm):

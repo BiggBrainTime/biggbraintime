@@ -37,14 +37,14 @@ def postComment(request,course_id, lecnum):
             if parentsno == "":
                 comment = Comment(comment=comment, user=user, lecture=lecture)
                 comment.save()
-                message.success(request, "your reply posted successfully")
+                messages.success(request, "your reply posted successfully")
 
             else:
                 parent=Comment.objects.get(sno=parentsno)
 
                 comment = Comment(comment=comment, user=user, lecture=lecture)
                 comment.save()
-                message.success(request, "your comment posted successfully")
+                messages.success(request, "tour comment posted successfully")
 
         return redirect(f"127.0.0.1:8000/{course_id}/{lecnum}")
 
@@ -57,28 +57,28 @@ def course_info(request, course_id):
 
 
 def signin(request):
+    form = UserForm()
+
     if request.method == "POST":
         email_sn = request.POST.get('email_sn','')
         password_sn = request.POST.get('password_sn','')
+        # user_name = request.POST.get('')
         
         user = authenticate(email=email_sn,password=password_sn)
         if user is not None:
             login(request,user)
             messages.success(request,"Login Successful!")
-            return redirect("index")
+            return redirect("signin")
         
         else:
+
             messages.error(request,"Login Failed!")
-            return redirect("index")
+            return redirect('signin')
 
 
-        # update = User.objects.filter(email=email_sn,password=password_sn)
-        # if len(update)==0:
-        #     return render(request,'login.html',{'error':True})
-        # else:
-        #     return render(request,'index.html')   #index.html=homepage
+   
     else:
-        return render(request,'login.html',{'error':False})
+        return render(request,'login_new.html',{'error':False, 'form':form})
 
 
 def signup(request):
@@ -112,9 +112,6 @@ def logout(request):
     messages.success("Logged Out Succesfully!")
     return redirect("index")
 
-
-#def insert_comment(request):
-    #return
 
 
 def add_course(request):
