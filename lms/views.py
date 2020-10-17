@@ -2,7 +2,7 @@ from django.http import request
 from lms.forms import CourseForm
 from django.shortcuts import render, redirect
 from django.utils import timezone
-from .models import Course, Lecture, Tag, Comment, Enrollment, Chat, Chatroom
+from .models import Course, Lecture, Tag, Comment, Enrollment
 from django.contrib.auth.models import User
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
@@ -112,3 +112,7 @@ def instructor_login(request):
 
 def middle_page(request):
     return render(request, 'middle_page.html')
+
+def quiz_view(request, course_id):
+    crse = Course.objects.get(course_id  = course_id)
+    return render(request, 'quiz.html', {'crse': crse})

@@ -93,20 +93,20 @@ class Replies(models.Model):
     user = models.ForeignKey(User,on_delete=models.CASCADE, default  = 0)
     
 
-class Chatroom(models.Model):
-    '''
-    for the chatroom
-    '''
-    instructor = models.ForeignKey(User,on_delete=models.CASCADE)
-    learner = models.ForeignKey(User,on_delete=models.CASCADE)
+# class Chatroom(models.Model):
+#     '''
+#     for the chatroom
+#     '''
+#     instructor = models.ForeignKey(User,on_delete=models.CASCADE)
+#     learner = models.ForeignKey(User,on_delete=models.CASCADE)
     
 
-class Chat(models.Model):
-    ''' 
-    for the chats in the chatroom
-    '''
-    room = models.ForeignKey(Chatroom,on_delete=models.CASCADE)
-    is_instructor = models.BooleanField(default = False)
-    chat = models.TextField(max_length=3000)
-    created = models.DateTimeField(auto_now_add=True)
+# class Chat(models.Model):
+#     ''' 
+#     for the chats in the chatroom
+#     '''
+#     room = models.ForeignKey(Chatroom,on_delete=models.CASCADE)
+#     is_instructor = models.BooleanField(default = False)
+#     chat = models.TextField(max_length=3000)
+#     created = models.DateTimeField(auto_now_add=True)
     
